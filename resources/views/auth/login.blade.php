@@ -9,7 +9,7 @@
                     <div class="brand-logo">
                         <img src="{{ asset('images/logo.svg') }}" alt="logo">
                     </div>
-                    <h4>Hello! let's get started</h4>
+                    <h4>Selamat datang !</h4>
                     <h6 class="font-weight-light">Sign in to continue.</h6>
                     <form class="pt-3" action="{{ route('login') }}" method="POST">
                         @csrf
