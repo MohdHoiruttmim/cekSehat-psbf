@@ -22,16 +22,6 @@
                                 id="exampleInputEmail1" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control form-control-lg" id="exampleFormControlSelect2">
-                                <option>Country</option>
-                                <option>United States of America</option>
-                                <option>United Kingdom</option>
-                                <option>India</option>
-                                <option>Germany</option>
-                                <option>Argentina</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <input type="password" name="password" class="form-control form-control-lg"
                                 id="exampleInputPassword1" placeholder="Password" required>
                         </div>
@@ -49,7 +39,7 @@
                             </button>
                         </div>
                         <div class="text-center mt-4 font-weight-light">
-                            Already have an account? <a href="login.html" class="text-primary">Login</a>
+                            Already have an account? <a href="{{ route('login') }}" class="text-primary">Login</a>
                         </div>
                     </form>
                 </div>
