@@ -16,7 +16,7 @@ use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('beranda');
 });
 
 // Route::get('/dashboard', function () {

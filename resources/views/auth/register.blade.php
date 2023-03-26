@@ -9,7 +9,7 @@
                     <div class="brand-logo">
                         <img src="{{ asset('images/logo.svg') }}" alt="logo">
                     </div>
-                    <h4>New here?</h4>
+                    <h4>Belum punya akun?</h4>
                     <h6 class="font-weight-light">Daftar dulu masbro!</h6>
                     <form class="pt-3" action="{{ route('register') }}" method="POST">
                         @csrf
