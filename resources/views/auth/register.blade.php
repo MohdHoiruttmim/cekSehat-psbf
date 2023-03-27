@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.guest')
 
 @section('content')
 <div class="container-fluid page-body-wrapper full-page-wrapper d-flex">

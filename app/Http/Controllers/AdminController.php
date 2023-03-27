@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pasien;
 
 class AdminController extends Controller
 {
@@ -24,5 +25,11 @@ class AdminController extends Controller
     public function log_activity()
     {
         return view('admin.log-activity');
+    }
+
+    public function checkup()
+    {
+        $pasien = Pasien::paginate(10);
+        return view('checkup', ['pasien' => $pasien]);
     }
 }
