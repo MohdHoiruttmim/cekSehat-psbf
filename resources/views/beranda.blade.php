@@ -40,7 +40,7 @@
     <li class="nav-item">
       <a class="nav-link" href="../../pages/charts/chartjs.html">
         <i class="mdi mdi-chart-pie menu-icon"></i>
-        <span class="menu-title">Charts</span>
+        <span class="menu-title">Diagram</span>
       </a>
     </li>
     <li class="nav-item">

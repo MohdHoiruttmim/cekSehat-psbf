@@ -15,9 +15,9 @@
   <div class="container-scroller d-flex">
     @yield('content')
 
-    <div class="container-fluid page-body-wrapper">
+<!--     <div class="container-fluid page-body-wrapper">
       @yield('main-content')
-    </div>
+    </div> -->
 
   </div>
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
