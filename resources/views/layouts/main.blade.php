@@ -14,6 +14,11 @@
 <body>
   <div class="container-scroller d-flex">
     @yield('content')
+
+    <div class="container-fluid page-body-wrapper">
+      @yield('main-content')
+    </div>
+
   </div>
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
