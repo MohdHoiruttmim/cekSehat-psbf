@@ -43,19 +43,25 @@
         <thead>
           <tr>
             <th>
-              User
+              NIK
             </th>
             <th>
-              First name
+              Tanggal Kunjungan
             </th>
             <th>
-              Progress
+              Nama Pasien
             </th>
             <th>
-              Amount
+              Alamat
             </th>
             <th>
-              Deadline
+              Umur
+            </th>
+            <th>
+              Poli
+            </th>
+            <th>
+              Diagnosa
             </th>
           </tr>
         </thead>
