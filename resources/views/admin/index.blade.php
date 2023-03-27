@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin</title>
-</head>
+@section('content')
+@include('partials.sidebar')
 
-<body>
-  <h1>Ini adalah admin</h1>
-</body>
+@section('main-content')
+@include('partials.nav')
+<div class="admin">
+  <h1> ini adalah halaman admin</h1>
+</div>
+@endsection
 
-</html>
+@endsection
