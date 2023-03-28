@@ -21,6 +21,7 @@
     </div>
 
   </div>
+  @yield('script')
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('js/off-canvas.js') }}"></script>

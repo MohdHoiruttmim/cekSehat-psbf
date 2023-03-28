@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\AdminController;
-
+use App\Models\Pasien;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,11 @@ Route::get('/user', [AdminController::class, 'add_user'])->name('add-user');
 Route::get('/userdata', [AdminController::class, 'data_user'])->name('data-user');
 Route::get('/log', [AdminController::class, 'log_activity'])->name('log-activity');
 Route::get('/checkup', [AdminController::class, 'checkup'])->name('checkup');
+Route::get('/cetak', function () {
+    return view('cetak-checkup', [
+        'pasien' => Pasien::all()
+    ]);
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
