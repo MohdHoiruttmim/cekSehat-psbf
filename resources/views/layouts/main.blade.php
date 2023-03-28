@@ -14,7 +14,14 @@
 <body>
   <div class="container-scroller d-flex">
     @yield('content')
+
+    <!-- make check rouet if route not register or login -->
+    <div class="container-fluid page-body-wrapper">
+      @yield('main-content')
+    </div>
+
   </div>
+  @yield('script')
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('js/off-canvas.js') }}"></script>
