@@ -11,6 +11,11 @@
     <canvas id="barplot" class="border"></canvas>
     <canvas id="pie" class="ml-5 border"></canvas>
   </div>
+  <div class="card-body border bg-light">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi incidunt saepe harum praesentium tempore
+      reiciendis optio laboriosam ab natus facilis. Ipsam quidem vero fugiat? Similique laudantium cum unde temporibus
+      laboriosam.</p>
+  </div>
 </div>
 @endsection
 
