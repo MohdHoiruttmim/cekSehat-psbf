@@ -22,6 +22,7 @@ Route::get('/userdata', [AdminController::class, 'data_user'])->name('data-user'
 Route::get('/log', [AdminController::class, 'log_activity'])->name('log-activity');
 Route::get('/checkup', [AdminController::class, 'checkup'])->name('checkup');
 Route::get('/cetak', [AdminController::class, 'cetak_pdf'])->name('cetak-pdf');
+Route::post('/user', [AdminController::class, 'store'])->name('add-user');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

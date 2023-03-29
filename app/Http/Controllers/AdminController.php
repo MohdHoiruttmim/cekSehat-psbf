@@ -41,6 +41,31 @@ class AdminController extends Controller
         return view('admin.add-user');
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+        ]);
+
+        dd($request->all());
+
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+        ]);
+
+        $data['password'] = bcrypt($data['password']);
+
+        User::create($data);
+
+        return redirect()->route('data-user');
+    }
+
     public function data_user()
     {
         return view('admin.data-user');

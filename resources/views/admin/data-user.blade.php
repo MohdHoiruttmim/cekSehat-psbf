@@ -5,7 +5,7 @@
 
 @section('main-content')
 <div class="card-body p-5">
-  <h4 class="card-title">Bordered table</h4>
+  <h4 class="card-title">Daftar Akun</h4>
   <p class="card-description">
     Add class <code>.table-bordered</code>
   </p>
