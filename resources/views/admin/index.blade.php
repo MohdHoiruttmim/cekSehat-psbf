@@ -23,7 +23,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
-  console.log('{!! json_encode($label) !!}');
+  // console.log('{!! json_encode($label) !!}');
   const barplot = document.getElementById('barplot');
   const pie = document.getElementById('pie');
 
@@ -62,14 +62,20 @@
   const pieplotChart = new Chart(pie, {
     type: 'pie',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Red', 'Blue', 'Yellow'],
+      labels: JSON.parse('{!! json_encode($label_pie) !!}'),
+      // labels: ['Red', 'Blue', 'Yellow'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3],
+        label: 'Jumlah',
+        data: JSON.parse('{!! json_encode($count_pie) !!}'),
         backgroundColor: [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
+          'rgb(255, 205, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(153, 102, 255)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 100, 132)',
+          'rgb(50, 50, 132)',
         ],
         hoverOffset: 4
       }]
@@ -78,11 +84,11 @@
       responsive: true,
       plugins: {
         legend: {
-          position: 'top',
+          display: false,
         },
         title: {
           display: true,
-          text: 'Chart.js Pie Chart'
+          text: 'Diagnosa Penyakit'
         }
       }
     },

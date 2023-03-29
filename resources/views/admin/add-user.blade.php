@@ -5,10 +5,7 @@
 
 @section('main-content')
 <div class="card-body p-5">
-  <h4 class="card-title">Daftar Akun Pengguna</h4>
-  <p class="card-description">
-    Basic form layout
-  </p>
+  <h2 class="card-title bg-primary p-3 text-white">Daftar Akun Pengguna</h2>
   <form class="forms-sample" method="POST" action="{{ route('add-user') }}">
     @csrf
     <div class="form-group">
@@ -32,9 +29,9 @@
         required>
     </div>
     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-    <button class="btn btn-light">
-      <a href="{{ route('data-user') }}" class="text-gray ">Cancel</a>
-    </button>
+    <a class="btn btn-light" href="{{ route('data-user') }}">
+      Cancel
+    </a>
   </form>
 </div>
 

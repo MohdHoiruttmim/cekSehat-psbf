@@ -23,6 +23,9 @@ Route::get('/log', [AdminController::class, 'log_activity'])->name('log-activity
 Route::get('/checkup', [AdminController::class, 'checkup'])->name('checkup');
 Route::get('/cetak', [AdminController::class, 'cetak_pdf'])->name('cetak-pdf');
 Route::post('/user', [AdminController::class, 'store'])->name('add-user');
+Route::delete('user/{id}', [AdminController::class, 'delete'])->name('delete-user');
+Route::get('user/{id}', [AdminController::class, 'update_show'])->name('update-user-show');
+Route::patch('user/{id}', [AdminController::class, 'update_store'])->name('update-user');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
