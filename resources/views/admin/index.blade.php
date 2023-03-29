@@ -12,9 +12,24 @@
     <canvas id="pie" class="ml-5 border"></canvas>
   </div>
   <div class="card-body border bg-light">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi incidunt saepe harum praesentium tempore
-      reiciendis optio laboriosam ab natus facilis. Ipsam quidem vero fugiat? Similique laudantium cum unde temporibus
-      laboriosam.</p>
+    <a href="{{ route('data-user') }}">
+      <button type="button" class="btn btn-info btn-rounded btn-fw">
+        <i class="mdi mdi-account-box mx-0"></i>
+        User
+      </button>
+    </a>
+    <a href="{{ route('checkup') }}">
+      <button type="button" class="btn btn-info btn-rounded btn-fw">
+        <i class="mdi mdi-login-variant"></i>
+        Check Log
+      </button>
+    </a>
+    <a href="{{ route('log-activity') }}">
+      <button type="button" class="btn btn-info btn-rounded btn-fw">
+        <i class="mdi mdi-view-list"></i>
+        Log Activity
+      </button>
+    </a>
   </div>
 </div>
 @endsection
