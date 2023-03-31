@@ -22,8 +22,7 @@
       <input type="date" name="start" class="form-control col-2" placeholder="dd/mm/yyyy" />
       <input type="date" name="end" class="form-control col-2" placeholder="dd/mm/yyyy" />
       <div class="input-group">
-        <input type="text" name="filter[nama_pasien]" class="form-control" placeholder="Cari nama pasien"
-          aria-label="Search...">
+        <input type="text" name="q" class="form-control" placeholder="Cari nama pasien" aria-label="Search...">
         <div class="input-group-append">
           <button class="btn btn-sm btn-primary" type="submit">Search</button>
         </div>

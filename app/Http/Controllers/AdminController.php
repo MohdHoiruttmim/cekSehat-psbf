@@ -84,7 +84,7 @@ class AdminController extends Controller
 
     public function data_user(Request $request)
     {
-        
+
         $users = QueryBuilder::for(User::class)
         ->allowedFilters(['name', 'email'])
         ->paginate(10)
@@ -95,7 +95,6 @@ class AdminController extends Controller
         // $users = User::all();
         $users = $users->reverse();
         return view('admin.data-user', ['users' => $users]);
-        // return view('admin.data-user', $data);
     }
 
     public function update_show($id)
@@ -119,14 +118,30 @@ class AdminController extends Controller
         return view('admin.log-activity');
     }
 
+    public function checkup_show(Request $request)
+    {
+        return view('checkup-new');
+    }
+
+    public function checkup_store(Request $request)
+    {
+        // dd($request->all());
+        Pasien::create([
+            'nik' => $request->nik,
+            'tanggal_kunjungan' => '2023-03-30',
+            'nama_pasien' => $request->nama_pasien,
+            'alamat' => $request->alamat,
+            'umur' => $request->umur,
+            'poli' => $request->poli,
+            'diagnosa' => $request->diagnosa,
+        ]);
+
+        return redirect()->route('checkup');
+    }
+
     public function checkup(Request $request)
     {
-        // $data['q'] = $request->query('q');
-        // $query = Pasien::select('*')
-        // ->where('nama_pasien', 'LIKE', '%' . $data['q'] . '%')
-        // ->orWhere('alamat', 'LIKE', '%' . $data['q'] . '%')
-        // ->orWhere('diagnosa', 'LIKE', '%' . $data['q'] . '%')
-        // ->get();
+        $data['q'] = $request->query('q');
         $data['start'] = $request->query('start');
         $data['end'] = $request->query('end');
 
@@ -143,8 +158,10 @@ class AdminController extends Controller
         }
 
         $pasien = QueryBuilder::for(Pasien::class)
-        ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli', 
-        AllowedFilter::scope('starts_before')])
+        // ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli'])
+        ->where('nama_pasien', 'LIKE', '%' . $data['q'] . '%')
+        ->orWhere('alamat', 'LIKE', '%' . $data['q'] . '%')
+        ->orWhere('diagnosa', 'LIKE', '%' . $data['q'] . '%')
         ->orderBy('tanggal_kunjungan', 'desc')
         ->paginate(10)
         ->appends(request()->query());

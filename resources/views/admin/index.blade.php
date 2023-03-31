@@ -6,27 +6,35 @@
 @section('main-content')
 @include('partials.nav')
 <div class="container pt-3">
-  <h1> ini adalah halaman admin</h1>
+  <div class="card-body bg-light text-dark my-3">
+    <h2>Admin Dashboard</h2>
+  </div>
   <div class="chart-wrapper d-flex" style="position: relative; height:40vh; width:80vw">
     <canvas id="barplot" class="border"></canvas>
     <canvas id="pie" class="ml-5 border"></canvas>
   </div>
-  <div class="card-body border bg-light">
+  <div class="card-body bg-light mt-3 d-flex justify-content-around">
+    <a href="{{ route('checkup-new') }}">
+      <button type="button" class="btn btn-lg btn-success btn-icon-text">
+        <i class="mdi mdi-account-plus btn-icon-prepend"></i>
+        Pasien Baru
+      </button>
+    </a>
     <a href="{{ route('data-user') }}">
-      <button type="button" class="btn btn-info btn-rounded btn-fw">
-        <i class="mdi mdi-account-box mx-0"></i>
+      <button type="button" class="btn btn-info btn-icon-text">
+        <i class="mdi mdi-account-multiple btn-icon-prepend"></i>
         User
       </button>
     </a>
     <a href="{{ route('checkup') }}">
-      <button type="button" class="btn btn-info btn-rounded btn-fw">
-        <i class="mdi mdi-login-variant"></i>
+      <button type="button" class="btn btn-danger btn-icon-text">
+        <i class="mdi mdi-login-variant btn-icon-prepend"></i>
         Check Log
       </button>
     </a>
     <a href="{{ route('log-activity') }}">
-      <button type="button" class="btn btn-info btn-rounded btn-fw">
-        <i class="mdi mdi-view-list"></i>
+      <button type="button" class="btn btn-warning btn-icon-text">
+        <i class="mdi mdi-content-paste btn-icon-prepend"></i>
         Log Activity
       </button>
     </a>

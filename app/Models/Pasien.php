@@ -12,6 +12,8 @@ class Pasien extends Model
     use HasFactory;
 
     protected $table = 'pasien';
+    // how to false crate_at and update_at
+    public $timestamps = false;
     protected $fillable = [
         'nik',
         'tanggal_kunjungan',

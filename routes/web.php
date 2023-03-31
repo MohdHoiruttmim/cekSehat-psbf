@@ -21,6 +21,8 @@ Route::get('/user', [AdminController::class, 'add_user'])->name('add-user');
 Route::get('/userdata', [AdminController::class, 'data_user'])->name('data-user');
 Route::get('/log', [AdminController::class, 'log_activity'])->name('log-activity');
 Route::get('/checkup', [AdminController::class, 'checkup'])->name('checkup');
+Route::post('/checkup', [AdminController::class, 'checkup_store'])->name('checkup-store');
+Route::get('/newcheckup', [AdminController::class, 'checkup_show'])->name('checkup-new');
 Route::get('/cetak', [AdminController::class, 'cetak_pdf'])->name('cetak-pdf');
 Route::post('/user', [AdminController::class, 'store'])->name('add-user');
 Route::delete('user/{id}', [AdminController::class, 'delete'])->name('delete-user');
