@@ -7,6 +7,8 @@ use App\Models\Pasien;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 
 class AdminController extends Controller
 {
@@ -82,16 +84,15 @@ class AdminController extends Controller
 
     public function data_user(Request $request)
     {
-        // $data['q'] = $request->query('q');
-        // $query = User::select('name', 'email', 'role')
-        // ->where('name', 'LIKE', '%' . $data['q'] . '%')
-        // ->orWhere('email', 'LIKE', '%' . $data['q'] . '%')
-        // ->get();
-
-        // $data['users'] = $query;
-
-        // dd($query);
-        $users = User::all();
+        
+        $users = QueryBuilder::for(User::class)
+        ->allowedFilters(['name', 'email'])
+        ->paginate(10)
+        ->appends(request()->query());
+        // http://127.0.0.1:3000/userdata?page=3
+        // dd($users->links());
+        // dd($users);
+        // $users = User::all();
         $users = $users->reverse();
         return view('admin.data-user', ['users' => $users]);
         // return view('admin.data-user', $data);
@@ -126,14 +127,33 @@ class AdminController extends Controller
         // ->orWhere('alamat', 'LIKE', '%' . $data['q'] . '%')
         // ->orWhere('diagnosa', 'LIKE', '%' . $data['q'] . '%')
         // ->get();
+        $data['start'] = $request->query('start');
+        $data['end'] = $request->query('end');
 
-        $users = QueryBuilder::for(User::class)
-        ->allowedFilters(['name', 'email'])
-        ->get();
+        if($data['start'] != null && $data['end'] != null) {
+            $pasien = QueryBuilder::for(Pasien::class)
+            ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli', 
+            AllowedFilter::scope('starts_before')])
+            ->orderBy('tanggal_kunjungan', 'desc')
+            ->whereBetween('tanggal_kunjungan', [$data['start'], $data['end']])
+            ->paginate(10)
+            ->appends(request()->query());
 
-        dd($users);
+            return view('checkup', ['pasien' => $pasien]);
+        }
+
+        $pasien = QueryBuilder::for(Pasien::class)
+        ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli', 
+        AllowedFilter::scope('starts_before')])
+        ->orderBy('tanggal_kunjungan', 'desc')
+        ->paginate(10)
+        ->appends(request()->query());
+
+        // dd($pasien);
+
+        // dd($pasien->links());
         // $data['users'] = $query;
-        $pasien = Pasien::paginate(10);
+        // $pasien = Pasien::paginate(10);
         // $pasien = $pasien->reverse();
         return view('checkup', ['pasien' => $pasien]);
     }

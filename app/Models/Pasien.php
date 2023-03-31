@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\Pasien;
 
 class Pasien extends Model
 {
@@ -19,6 +21,11 @@ class Pasien extends Model
         'poli',
         'diagnosa',
     ];
+
+    public function scopeStartsBefore(Builder $query, $data)
+    {
+        return $query->where('tanggal_kunjungan', '<=', $data);
+    }
 
     // public function user()
     // {

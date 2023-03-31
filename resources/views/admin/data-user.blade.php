@@ -5,10 +5,15 @@
 
 @section('main-content')
 <div class="card-body p-5">
-  <h4 class="card-title">Data Akun User</h4>
-  <p class="card-description">
-    Add class <code>.table-bordered</code>
-  </p>
+  <h2 class="card-title">Data Akun User</h2>
+  <form class="form-inline">
+    <div class="input-group">
+      <input type="text" name="filter[name]" class="form-control" placeholder="Cari nama user" aria-label="Search...">
+      <div class="input-group-append">
+        <button class="btn btn-sm btn-primary" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
   <div class="table-responsive pt-3">
     <table class="table table-bordered">
       <thead>
