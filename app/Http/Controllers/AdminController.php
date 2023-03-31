@@ -80,12 +80,21 @@ class AdminController extends Controller
         return redirect()->route('data-user');
     }
 
-    public function data_user()
+    public function data_user(Request $request)
     {
-        $users = User::paginate(10);
-        // reverse data
+        // $data['q'] = $request->query('q');
+        // $query = User::select('name', 'email', 'role')
+        // ->where('name', 'LIKE', '%' . $data['q'] . '%')
+        // ->orWhere('email', 'LIKE', '%' . $data['q'] . '%')
+        // ->get();
+
+        // $data['users'] = $query;
+
+        // dd($query);
+        $users = User::all();
         $users = $users->reverse();
         return view('admin.data-user', ['users' => $users]);
+        // return view('admin.data-user', $data);
     }
 
     public function update_show($id)
@@ -109,9 +118,23 @@ class AdminController extends Controller
         return view('admin.log-activity');
     }
 
-    public function checkup()
+    public function checkup(Request $request)
     {
+        // $data['q'] = $request->query('q');
+        // $query = Pasien::select('*')
+        // ->where('nama_pasien', 'LIKE', '%' . $data['q'] . '%')
+        // ->orWhere('alamat', 'LIKE', '%' . $data['q'] . '%')
+        // ->orWhere('diagnosa', 'LIKE', '%' . $data['q'] . '%')
+        // ->get();
+
+        $users = QueryBuilder::for(User::class)
+        ->allowedFilters(['name', 'email'])
+        ->get();
+
+        dd($users);
+        // $data['users'] = $query;
         $pasien = Pasien::paginate(10);
+        // $pasien = $pasien->reverse();
         return view('checkup', ['pasien' => $pasien]);
     }
 

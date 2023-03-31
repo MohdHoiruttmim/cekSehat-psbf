@@ -5,7 +5,7 @@
 
 @section('main-content')
 <div class="card-body p-5">
-  <h2 class="card-title bg-indigo text-white p-3">Edit Akun Pengguna</h2>
+  <h2 class="card-title bg-warning text-white p-3">Edit Akun Pengguna</h2>
   <form class="forms-sample" method="POST" action="{{ route('update-user', $user->id) }}">
     @csrf
     @method('PATCH')
