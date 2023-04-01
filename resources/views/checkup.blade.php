@@ -4,30 +4,50 @@
 @include('partials.sidebar')
 
 @section('main-content')
-<div class="card px-5">
+<div class="card px-4">
   <div class="card-body">
     <h2 class="mb-4">Riwayat Checkup</h2>
-    <form class="form-inline">
-      <select class="form-control" name="filter[poli]">
-        <option value="">Semua Poli</option>
-        <option value="anak">Anak</option>
-        <option value="gigi dan mulut">Gigi dan Mulut</option>
-        <option value="jantung">Jantung</option>
-        <option value="kulit dan kelamin">Kulit dan Kelamin</option>
-        <option value="mata">Mata</option>
-        <option value="paru">Paru</option>
-        <option value="penyakit dalam">Penyakit Dalam</option>
-        <option value="saraf">Saraf</option>
-      </select>
-      <input type="date" name="start" class="form-control col-2" placeholder="dd/mm/yyyy" />
-      <input type="date" name="end" class="form-control col-2" placeholder="dd/mm/yyyy" />
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Cari nama pasien" aria-label="Search...">
-        <div class="input-group-append">
-          <button class="btn btn-sm btn-primary" type="submit">Search</button>
+    <div class="row">
+      <form class="form-inline">
+        <select class="form-control" name="filter[poli]">
+          <option value="">Semua Poli</option>
+          <option value="anak">Anak</option>
+          <option value="gigi dan mulut">Gigi dan Mulut</option>
+          <option value="jantung">Jantung</option>
+          <option value="kulit dan kelamin">Kulit dan Kelamin</option>
+          <option value="mata">Mata</option>
+          <option value="paru">Paru</option>
+          <option value="penyakit dalam">Penyakit Dalam</option>
+          <option value="saraf">Saraf</option>
+        </select>
+        <input type="date" name="start" class="form-control col-2" placeholder="dd/mm/yyyy" />
+        <input type="date" name="end" class="form-control col-2" placeholder="dd/mm/yyyy" />
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search..." aria-label="Search...">
+          <div class="input-group-append">
+            <button class="btn btn-sm btn-primary" type="submit">Search</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <a href="/cetak?search=pdf" target="_blank">
+        <button type="button" class="btn btn-sm btn-danger btn-icon-text mx-1">
+          PDF
+          <i class="mdi mdi-printer btn-icon-append"></i>
+        </button>
+      </a>
+      <a href="/cetak?search=excel" target="_blank">
+        <button type="button" class="btn btn-sm btn-success btn-icon-text mx-1">
+          Excel
+          <i class="mdi mdi-printer btn-icon-append"></i>
+        </button>
+      </a>
+      <a href="/cetak?search=msword" target="_blank">
+        <button type="button" class="btn btn-sm btn-info btn-icon-text mx-1">
+          Word
+          <i class="mdi mdi-printer btn-icon-append"></i>
+        </button>
+      </a>
+    </div>
   </div>
   <div class="card-body">
     <div class="table-responsive">

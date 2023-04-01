@@ -183,7 +183,7 @@ class AdminController extends Controller
         return redirect()->route('data-user');
     }
 
-    public function cetak_pdf()
+    public function cetak()
     {
         $pasien = Pasien::all();
         return view('cetak-checkup', ['pasien' => $pasien]);
