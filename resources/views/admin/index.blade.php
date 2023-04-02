@@ -7,12 +7,13 @@
 @include('partials.nav')
 <div class="container pt-3">
   <div class="card-body bg-light text-dark my-3">
-    <h2>Admin Dashboard</h2>
+    <h2>Dashboard</h2>
   </div>
   <div class="chart-wrapper d-flex" style="position: relative; height:40vh; width:80vw">
     <canvas id="barplot" class="border"></canvas>
     <canvas id="pie" class="ml-5 border"></canvas>
   </div>
+  @if(Auth::user()->role == 'admin')
   <div class="card-body bg-light mt-3 d-flex justify-content-around">
     <a href="{{ route('checkup-new') }}">
       <button type="button" class="btn btn-lg btn-success btn-icon-text">
@@ -39,6 +40,7 @@
       </button>
     </a>
   </div>
+  @endif
 </div>
 @endsection
 

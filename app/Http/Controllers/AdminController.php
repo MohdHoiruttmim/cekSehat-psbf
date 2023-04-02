@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
+use App\models\Log;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -36,9 +38,9 @@ class AdminController extends Controller
         ->get();
         $label_pie = [];
         $count_pie = [];
-        // convert to array
+
         $pie = json_decode(json_encode($pie), true);
-        // insert value to label
+
         foreach ($pie as $key => $value) {
             $label_pie[] = $value['diagnosa'];
         }
@@ -46,9 +48,6 @@ class AdminController extends Controller
             $count_pie[] = $value['total'];
         }
 
-        
-        // dd($label);
-        // dd($count);
         return view('admin.index', [
             'title' => 'Dashboard', 
             'label' => $label,
@@ -110,12 +109,25 @@ class AdminController extends Controller
         $user->email = request('email');
         $user->role = request('role');
         $user->save();
+
+        Log::create([
+            'time' => Carbon::now(),
+            'email' => auth()->user()->email,
+            'username' => auth()->user()->name,
+            'action' => "<td><label class='badge badge-warning'>Edit Profile username '$user->name'</label></td>",
+        ]);
+
         return redirect()->route('data-user');
     }
 
     public function log_activity()
     {
-        return view('admin.log-activity');
+        $logs = QueryBuilder::for(Log::class)
+        ->orderBy('time', 'desc')
+        ->paginate(10)
+        ->appends(request()->query());
+        // dd($logs);
+        return view('admin.log-activity', ['logs' => $logs]);
     }
 
     public function checkup_show(Request $request)
@@ -125,15 +137,21 @@ class AdminController extends Controller
 
     public function checkup_store(Request $request)
     {
-        // dd($request->all());
         Pasien::create([
             'nik' => $request->nik,
-            'tanggal_kunjungan' => '2023-03-30',
+            'tanggal_kunjungan' => Carbon::now(),
             'nama_pasien' => $request->nama_pasien,
             'alamat' => $request->alamat,
             'umur' => $request->umur,
             'poli' => $request->poli,
             'diagnosa' => $request->diagnosa,
+        ]);
+
+        Log::create([
+            'time' => Carbon::now(),
+            'email' => auth()->user()->email,
+            'username' => auth()->user()->name,
+            'action' => "<td><label class='badge badge-info'>Insert Pasien '$request->nama_pasien'</label></td>",
         ]);
 
         return redirect()->route('checkup');
@@ -177,7 +195,6 @@ class AdminController extends Controller
 
     public function delete($id)
     {
-        // dd($id);
         $user = User::find($id);
         $user->delete();
         return redirect()->route('data-user');
