@@ -117,6 +117,10 @@ class AdminController extends Controller
             'action' => "<td><label class='badge badge-warning'>Edit Profile username '$user->name'</label></td>",
         ]);
 
+        if (auth()->user()->role == 'user') {
+            return redirect()->route('home');
+        }
+
         return redirect()->route('data-user');
     }
 
@@ -160,6 +164,12 @@ class AdminController extends Controller
     public function checkup(Request $request)
     {
         $data['q'] = $request->query('q');
+        $data['category'] = $request->query('category');
+        if($data['category'] == null) {
+            $data['category'] = '';
+            dd($data['category']);
+        }
+        // dd($data['category']);
         $data['start'] = $request->query('start');
         $data['end'] = $request->query('end');
 
@@ -176,8 +186,9 @@ class AdminController extends Controller
         }
 
         $pasien = QueryBuilder::for(Pasien::class)
-        // ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli'])
+        ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli'])
         ->where('nama_pasien', 'LIKE', '%' . $data['q'] . '%')
+        // ->orWhere('poli', 'LIKE', '%' . $data['category'] . '%')
         ->orWhere('alamat', 'LIKE', '%' . $data['q'] . '%')
         ->orWhere('diagnosa', 'LIKE', '%' . $data['q'] . '%')
         ->orderBy('tanggal_kunjungan', 'desc')

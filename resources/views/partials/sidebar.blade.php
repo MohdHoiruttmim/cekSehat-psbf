@@ -18,9 +18,13 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
+          @if (Auth::user()->role == 'admin')
           <li class="nav-item"> <a class="nav-link" href="{{ route('data-user') }}">Data User</a></li>
-          @if(Auth::user()->role == 'admin')
           <li class="nav-item"> <a class="nav-link" href="{{ route('add-user') }}">Add User</a></li>
+          @endif
+          @if (Auth::user()->role == 'user')
+          <li class="nav-item"> <a class="nav-link" href="{{ route('update-user', Auth::user()->id) }}">Data User</a>
+          </li>
           @endif
         </ul>
       </div>

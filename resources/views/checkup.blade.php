@@ -9,7 +9,7 @@
     <h2 class="mb-4">Riwayat Checkup</h2>
     <div class="row">
       <form class="form-inline">
-        <select class="form-control" name="filter[poli]">
+        <select class="form-control" name="category">
           <option value="">Semua Poli</option>
           <option value="anak">Anak</option>
           <option value="gigi dan mulut">Gigi dan Mulut</option>

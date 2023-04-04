@@ -9,7 +9,7 @@
   <div class="card-body bg-light text-dark my-3">
     <h2>Dashboard</h2>
   </div>
-  <div class="chart-wrapper d-flex" style="position: relative; height:40vh; width:80vw">
+  <div class="chart-wrapper d-flex flex-wrap" style="position: relative; height:40vh; width:80vw">
     <canvas id="barplot" class="border"></canvas>
     <canvas id="pie" class="ml-5 border"></canvas>
   </div>

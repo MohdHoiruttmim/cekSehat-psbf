@@ -26,7 +26,9 @@ Route::group(['middleware' => 'auth'], function() {
     })->name('dashboard');
 
     Route::get("/redirectAuthenticatedUsers", [RedirectAuthenticatedUsersController::class, "home"]);
-    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/', [AdminController::class, 'index'])->name('home');
+    Route::get('user/{id}', [AdminController::class, 'update_show'])->name('update-user-show');
+    Route::patch('user/{id}', [AdminController::class, 'update_store'])->name('update-user');
 
     Route::group(['middleware' => 'checkRole:admin'], function() {
         // Route::get('/adminDashboard', function () {
@@ -41,8 +43,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/cetak', [AdminController::class, 'cetak'])->name('cetak');
         Route::post('/user', [AdminController::class, 'store'])->name('add-user');
         Route::delete('user/{id}', [AdminController::class, 'delete'])->name('delete-user');
-        Route::get('user/{id}', [AdminController::class, 'update_show'])->name('update-user-show');
-        Route::patch('user/{id}', [AdminController::class, 'update_store'])->name('update-user');
     });
 
 
@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
             return view('users.index');
         })->name('userDashboard');
     });
+
 });
 
 Route::middleware('auth')->group(function () {
