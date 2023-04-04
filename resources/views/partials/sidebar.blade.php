@@ -30,10 +30,18 @@
       </div>
     </li>
     <li class="nav-item">
+      @if (Auth::user()->role == 'admin')
       <a class="nav-link" href="{{ route('checkup') }}">
         <i class="mdi mdi-content-paste menu-icon"></i>
         <span class="menu-title">Checkup Log</span>
       </a>
+      @endif
+      @if (Auth::user()->role == 'user')
+      <a class="nav-link" href="{{ route('riwayat') }}">
+        <i class="mdi mdi-content-paste menu-icon"></i>
+        <span class="menu-title">Checkup Log</span>
+      </a>
+      @endif
     </li>
     @if(Auth::user()->role == 'admin')
     <li class="nav-item">

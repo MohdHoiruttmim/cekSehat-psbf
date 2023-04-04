@@ -165,10 +165,7 @@ class AdminController extends Controller
     {
         $data['q'] = $request->query('q');
         $data['category'] = $request->query('category');
-        if($data['category'] == null) {
-            $data['category'] = '';
-            dd($data['category']);
-        }
+
         // dd($data['category']);
         $data['start'] = $request->query('start');
         $data['end'] = $request->query('end');
@@ -185,17 +182,23 @@ class AdminController extends Controller
             return view('checkup', ['pasien' => $pasien]);
         }
 
+        // $pasien = QueryBuilder::for(Pasien::class)
+        // ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli'])
+        // ->where('nama_pasien', 'LIKE', '%' . $data['q'] . '%')
+        // ->where('poli', 'LIKE', '%' . $data['category'] . '%')
+        // ->orWhere('alamat', 'LIKE', '%' . $data['q'] . '%')
+        // ->orWhere('diagnosa', 'LIKE', '%' . $data['q'] . '%')
+        // ->orderBy('tanggal_kunjungan', 'desc')
+        // ->paginate(10)
+        // ->appends(request()->query());
+
+        // alternate
         $pasien = QueryBuilder::for(Pasien::class)
         ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli'])
-        ->where('nama_pasien', 'LIKE', '%' . $data['q'] . '%')
-        ->orWhere('poli', 'LIKE', '%' . $data['category'] . '%')
-        ->orWhere('alamat', 'LIKE', '%' . $data['q'] . '%')
-        ->orWhere('diagnosa', 'LIKE', '%' . $data['q'] . '%')
         ->orderBy('tanggal_kunjungan', 'desc')
         ->paginate(10)
         ->appends(request()->query());
 
-        // dd($pasien);
 
         // dd($pasien->links());
         // $data['users'] = $query;

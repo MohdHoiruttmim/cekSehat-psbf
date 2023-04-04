@@ -9,7 +9,7 @@
     <h2 class="mb-4">Riwayat Checkup</h2>
     <div class="row">
       <form class="form-inline">
-        <select class="form-control" name="category">
+        <select class="form-control" name="filter[poli]">
           <option value="">Semua Poli</option>
           <option value="anak">Anak</option>
           <option value="gigi dan mulut">Gigi dan Mulut</option>
@@ -23,7 +23,8 @@
         <input type="date" name="start" class="form-control col-2" placeholder="dd/mm/yyyy" />
         <input type="date" name="end" class="form-control col-2" placeholder="dd/mm/yyyy" />
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search..." aria-label="Search...">
+          <input type="text" name="filter[nama_pasien]" class="form-control" placeholder="Cari nama pasien..."
+            aria-label="Search...">
           <div class="input-group-append">
             <button class="btn btn-sm btn-primary" type="submit">Search</button>
           </div>

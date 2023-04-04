@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Models\Pasien;
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/beranda', function () {
             return view('users.index');
         })->name('userDashboard');
+        Route::get('/riwayat', [UserController::class, 'riwayat'])->name('riwayat');
     });
 
 });
