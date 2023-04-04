@@ -188,7 +188,7 @@ class AdminController extends Controller
         $pasien = QueryBuilder::for(Pasien::class)
         ->allowedFilters(['nama_pasien', 'alamat', 'diagnosa', 'poli'])
         ->where('nama_pasien', 'LIKE', '%' . $data['q'] . '%')
-        // ->orWhere('poli', 'LIKE', '%' . $data['category'] . '%')
+        ->orWhere('poli', 'LIKE', '%' . $data['category'] . '%')
         ->orWhere('alamat', 'LIKE', '%' . $data['q'] . '%')
         ->orWhere('diagnosa', 'LIKE', '%' . $data['q'] . '%')
         ->orderBy('tanggal_kunjungan', 'desc')
