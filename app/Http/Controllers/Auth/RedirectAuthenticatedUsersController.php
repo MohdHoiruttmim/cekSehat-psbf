@@ -10,10 +10,10 @@ class RedirectAuthenticatedUsersController extends Controller
     public function home()
     {
         if (auth()->user()->role == 'admin') {
-            return redirect('/adminDashboard');
+            return redirect('/');
         }
         elseif(auth()->user()->role == 'user'){
-            return redirect('/userDashboard');
+            return redirect('/beranda');
         }
         else{
             return auth()->logout();

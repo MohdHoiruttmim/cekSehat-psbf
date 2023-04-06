@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Log;
+use Carbon\Carbon;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -26,6 +28,12 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+        Log::create([
+            'time' => Carbon::now(),
+            'email' => $request->user()->email,
+            'username' => $request->user()->name,
+            'action' => '<td><label class="badge badge-success">Sign In</label></td>',
+        ]);
 
         $request->session()->regenerate();
 
@@ -37,6 +45,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        Log::create([
+            'time' => Carbon::now(),
+            'email' => $request->user()->email,
+            'username' => $request->user()->name,
+            'action' => '<td><label class="badge badge-danger">Sign Out</label></td>',
+        ]);
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

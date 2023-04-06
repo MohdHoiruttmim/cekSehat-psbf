@@ -4,38 +4,51 @@
 @include('partials.sidebar')
 
 @section('main-content')
-<div class="card px-5">
+<div class="card px-4">
   <div class="card-body">
-    <h4 class="card-title">Inline forms</h4>
-    <p class="card-description">
-      Use the <code>.form-inline</code> class to display a series of labels, form controls, and buttons on
-      a single horizontal row
-    </p>
-    <form class="form-inline">
-      <label class="sr-only" for="inlineFormInputName2">Name</label>
-      <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
-
-      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-      <div class="input-group mb-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">@</div>
+    <h2 class="mb-4">Riwayat Checkup</h2>
+    <div class="row">
+      <form class="form-inline">
+        <select class="form-control" name="filter[poli]">
+          <option value="">Semua Poli</option>
+          <option value="anak">Anak</option>
+          <option value="gigi dan mulut">Gigi dan Mulut</option>
+          <option value="jantung">Jantung</option>
+          <option value="kulit dan kelamin">Kulit dan Kelamin</option>
+          <option value="mata">Mata</option>
+          <option value="paru">Paru</option>
+          <option value="penyakit dalam">Penyakit Dalam</option>
+          <option value="saraf">Saraf</option>
+        </select>
+        <input type="date" name="start" class="form-control col-2" placeholder="dd/mm/yyyy" />
+        <input type="date" name="end" class="form-control col-2" placeholder="dd/mm/yyyy" />
+        <div class="input-group">
+          <input type="text" name="filter[nama_pasien]" class="form-control" placeholder="Cari nama pasien..."
+            aria-label="Search...">
+          <div class="input-group-append">
+            <button class="btn btn-sm btn-primary" type="submit">Search</button>
+          </div>
         </div>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
-      </div>
-      <div class="form-check mx-sm-2">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" checked>
-          Remember me
-        </label>
-      </div>
-      <button type="submit" class="btn btn-primary mb-2">Submit</button>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username">
-        <div class="input-group-append">
-          <button class="btn btn-sm btn-primary" type="button">Search</button>
-        </div>
-      </div>
-    </form>
+      </form>
+      <a href="/cetak?search=pdf" target="_blank">
+        <button type="button" class="btn btn-sm btn-danger btn-icon-text mx-1">
+          PDF
+          <i class="mdi mdi-printer btn-icon-append"></i>
+        </button>
+      </a>
+      <a href="/cetak?search=excel" target="_blank">
+        <button type="button" class="btn btn-sm btn-success btn-icon-text mx-1">
+          Excel
+          <i class="mdi mdi-printer btn-icon-append"></i>
+        </button>
+      </a>
+      <a href="/cetak?search=msword" target="_blank">
+        <button type="button" class="btn btn-sm btn-info btn-icon-text mx-1">
+          Word
+          <i class="mdi mdi-printer btn-icon-append"></i>
+        </button>
+      </a>
+    </div>
   </div>
   <div class="card-body">
     <div class="table-responsive">
