@@ -11,7 +11,6 @@ class UserController extends Controller
 {
     public function riwayat(Request $request)
     {
-        // $nik = $request->nik;
         $nik = $request->query('nik');
         
         if ($nik){
